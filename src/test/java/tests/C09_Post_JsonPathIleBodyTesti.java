@@ -67,7 +67,7 @@ public class C09_Post_JsonPathIleBodyTesti {
                         "booking.bookingdates.checkin",equalTo("2025-07-01"),
                         "booking.bookingdates.checkout",equalTo("2025-07-10"));
 
-
+        resp.prettyPrint();
 
 
 
