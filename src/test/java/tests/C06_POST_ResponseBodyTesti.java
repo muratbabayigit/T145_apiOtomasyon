@@ -43,7 +43,8 @@ public class C06_POST_ResponseBodyTesti {
 
         Response resp=given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);
 
-        resp.then().assertThat().statusCode(201).contentType("application/json")
+        resp.then().assertThat().statusCode(201)
+                                .contentType("application/json")
                                 .body("title", equalTo("API"))
                                 .body("userId",lessThan(100))
                                 .body("body",containsString("API"));
