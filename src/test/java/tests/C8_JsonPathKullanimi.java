@@ -1,5 +1,6 @@
 package tests;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,8 @@ public class C8_JsonPathKullanimi {
                 "address":{
                    	"streetAddress":"Kurtulus cad.",
                    	"city":"Ankara",
-                	"postalCode":"06100" },
+                	"postalCode":"06100"
+                	      },
                 "age":49,
                 "phoneNumbers":[
                     {
@@ -31,7 +33,7 @@ public class C8_JsonPathKullanimi {
 
         JSONObject kisiBilgisi=new JSONObject();
         JSONObject adresBilgisi=new JSONObject();
-        JSONObject telefonBilgileri=new JSONObject();
+        JSONArray telefonBilgileri=new JSONArray();
             JSONObject evTelBilgisi=new JSONObject();
             JSONObject cepTelBilgisi=new JSONObject();
 
@@ -39,6 +41,8 @@ public class C8_JsonPathKullanimi {
         cepTelBilgisi.put("type","cep");
         evTelBilgisi.put("number","216-555 55 55");
         evTelBilgisi.put("type","ev");
+        telefonBilgileri.put(cepTelBilgisi);
+        telefonBilgileri.put(evTelBilgisi);
 
 
         adresBilgisi.put("streetAddress","Kurtulus cad.");
@@ -47,9 +51,18 @@ public class C8_JsonPathKullanimi {
 
         kisiBilgisi.put( "firstName","Murat");
         kisiBilgisi.put( "lastName","Yiğit");
+        kisiBilgisi.put("age","49");
         kisiBilgisi.put("address",adresBilgisi);
         kisiBilgisi.put("phoneNumbers",telefonBilgileri);
 
-        System.out.println(kisiBilgisi);
+        //System.out.println(kisiBilgisi);
+        System.out.println("\n");
+
+        System.out.println("Adı: "+kisiBilgisi.get("firstName"));
+        System.out.println("Soyadı: "+kisiBilgisi.get("lastName"));
+        System.out.println("Yaş: "+kisiBilgisi.get("age"));
+        System.out.println("Yaşadığı Şehir: "+kisiBilgisi.getJSONObject("address").get("city"));
+        System.out.println("Cep Tel : "+kisiBilgisi.getJSONArray("phoneNumbers").getJSONObject(0).get("number"));
+        System.out.println("Ev Tel : "+kisiBilgisi.getJSONArray("phoneNumbers").getJSONObject(1).get("number"));
     }
 }
