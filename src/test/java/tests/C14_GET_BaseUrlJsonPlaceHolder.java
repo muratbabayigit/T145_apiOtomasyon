@@ -38,7 +38,7 @@ public class C14_GET_BaseUrlJsonPlaceHolder extends BaseUrlJsonPlaceHolder {
     public void test02(){
         specJsonPlaceHolder.pathParams("first","posts","second",44);
         Response resp=given().when().spec(specJsonPlaceHolder).get("/{first}/{second}");
-        //resp.prettyPrint();
+        resp.prettyPrint();
         resp.then().assertThat().statusCode(200).body("title", Matchers.equalTo("optio dolor molestias sit"));
 
     }
@@ -47,4 +47,13 @@ public class C14_GET_BaseUrlJsonPlaceHolder extends BaseUrlJsonPlaceHolder {
     //  https://jsonplaceholder.typicode.com/posts/50 endpointine
     //   bir DELETE request gonderdigimizde donen response’un
     //   status code’unun 200 oldugunu ve response body’sinin null oldugunu test edin
+
+    @Test
+    public void test03(){
+        specJsonPlaceHolder.pathParams("pp1","posts","pp2",50);
+        Response resp=given().when().spec(specJsonPlaceHolder).delete("/{pp1}/{pp2}");
+        resp.prettyPrint();
+        resp.then().assertThat().statusCode(200).body("title", Matchers.nullValue());
+
+    }
 }
