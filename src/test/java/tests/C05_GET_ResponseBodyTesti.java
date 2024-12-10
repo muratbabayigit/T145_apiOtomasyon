@@ -29,7 +29,7 @@ public class C05_GET_ResponseBodyTesti {
 
         Response resp=given().when().get(url);
 
-        resp.then().assertThat().statusCode(200).contentType("application/json")
+        resp.then().assertThat().statusCode(200).contentType("application/json; charset=utf-8")
                                 .body("userId",equalTo(5))
                                 .body("title",equalTo("optio dolor molestias sit")) ;
 
