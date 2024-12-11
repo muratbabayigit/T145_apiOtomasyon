@@ -4,6 +4,8 @@ import org.json.JSONObject;
 
 public class JsonPlaceHolderTestData {
     public static int basariliStatusCode=200;
+    public static String contentType="application/json; charset=utf-8";
+    public static String connetionHeader="keep-alive";
     /*
     *
         https://jsonplaceholder.typicode.com/posts/22 url'ine
@@ -30,6 +32,24 @@ public class JsonPlaceHolderTestData {
             return expData;
         }
 
+        /*
+            {
+            "title":"Ahmet",
+            "body":"Merhaba",
+            "userId":10,
+            "id":70
+            }
+         */
+        public static JSONObject JsonDataOlustur(String title, String body,int userId,int id){
+            JSONObject jsonData=new JSONObject();
+                jsonData.put("title",title);
+                jsonData.put("body",body);
+                jsonData.put("userId",userId);
+                jsonData.put("id",id);
+
+
+            return jsonData;
+        }
 
 
 
