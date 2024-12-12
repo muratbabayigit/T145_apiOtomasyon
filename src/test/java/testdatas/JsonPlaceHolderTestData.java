@@ -2,6 +2,9 @@ package testdatas;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JsonPlaceHolderTestData {
     public static int basariliStatusCode=200;
     public static String contentType="application/json; charset=utf-8";
@@ -49,6 +52,16 @@ public class JsonPlaceHolderTestData {
 
 
             return jsonData;
+        }
+
+        public static Map<String,Object> MAPDataOLustur(String title, String body,double userId, double id){
+            Map<String, Object> bodyData=new HashMap<>();
+            bodyData.put("title",title);
+            bodyData.put("body",body);
+            bodyData.put("userId",userId);
+            bodyData.put("id",id);
+
+        return bodyData;
         }
 
 
